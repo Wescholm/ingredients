@@ -1,8 +1,20 @@
 [
   {
+    "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "admin",
     "resource": "User",
     "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -12,9 +24,21 @@
     "attributes": "*"
   },
   {
+    "role": "user",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
     "role": "admin",
     "resource": "User",
     "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -24,38 +48,14 @@
     "attributes": "*"
   },
   {
-    "role": "admin",
+    "role": "user",
     "resource": "User",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "Ingredient",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Ingredient",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Ingredient",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Ingredient",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Ingredient",
+    "resource": "User",
     "action": "read:any",
     "attributes": "*"
   }

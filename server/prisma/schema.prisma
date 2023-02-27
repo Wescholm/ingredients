@@ -17,11 +17,3 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
-
-model Ingredient {
-  createdAt  DateTime @default(now())
-  definition String
-  id         String   @id @default(cuid())
-  name       String   @unique
-  updatedAt  DateTime @updatedAt
-}
