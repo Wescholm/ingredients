@@ -1,4 +1,5 @@
 export type IngredientCreateInput = {
-  definition: string;
+  description?: string | null;
+  isValid?: boolean | null;
   name: string;
 };
