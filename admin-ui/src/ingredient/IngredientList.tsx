@@ -1,5 +1,12 @@
 import * as React from "react";
-import { List, Datagrid, ListProps, DateField, TextField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  ListProps,
+  DateField,
+  TextField,
+  BooleanField,
+} from "react-admin";
 import Pagination from "../Components/Pagination";
 
 export const IngredientList = (props: ListProps): React.ReactElement => {
@@ -7,14 +14,15 @@ export const IngredientList = (props: ListProps): React.ReactElement => {
     <List
       {...props}
       bulkActionButtons={false}
-      title={"ingredients"}
+      title={"Ingredients"}
       perPage={50}
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
-        <TextField label="Definition" source="definition" />
+        <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isValid" source="isValid" />
         <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>

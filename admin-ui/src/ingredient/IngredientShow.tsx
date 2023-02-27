@@ -5,6 +5,7 @@ import {
   ShowProps,
   DateField,
   TextField,
+  BooleanField,
 } from "react-admin";
 
 export const IngredientShow = (props: ShowProps): React.ReactElement => {
@@ -12,8 +13,9 @@ export const IngredientShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
-        <TextField label="Definition" source="definition" />
+        <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isValid" source="isValid" />
         <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>

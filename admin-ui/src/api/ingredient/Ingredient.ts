@@ -1,7 +1,8 @@
 export type Ingredient = {
   createdAt: Date;
-  definition: string;
+  description: string | null;
   id: string;
+  isValid: boolean | null;
   name: string;
   updatedAt: Date;
 };

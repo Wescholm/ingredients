@@ -1,7 +1,6 @@
-datasource db {
-  provider          = "mongodb"
-  url               = env("DB_URL")
-  shadowDatabaseUrl = env("DB_URL")
+datasource postgres {
+  provider = "postgresql"
+  url      = env("DB_URL")
 }
 
 generator client {
@@ -11,10 +10,19 @@ generator client {
 model User {
   createdAt DateTime @default(now())
   firstName String?
-  id        String @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   lastName  String?
   password  String
   roles     Json
   updatedAt DateTime @updatedAt
   username  String   @unique
+}
+
+model Ingredient {
+  createdAt   DateTime @default(now())
+  description String?
+  id          String   @id @default(cuid())
+  isValid     Boolean?
+  name        String   @unique
+  updatedAt   DateTime @updatedAt
 }
