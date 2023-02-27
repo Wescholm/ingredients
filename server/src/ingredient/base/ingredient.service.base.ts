@@ -10,40 +10,27 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, Ingredient } from "@prisma/client";
 
 export class IngredientServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
-  async count<T extends Prisma.IngredientFindManyArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientFindManyArgs>
-  ): Promise<number> {
+  async count(args: any): Promise<number> {
     return this.prisma.ingredient.count(args);
   }
 
-  async findMany<T extends Prisma.IngredientFindManyArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientFindManyArgs>
-  ): Promise<Ingredient[]> {
+  async findMany(args: any): Promise<any[]> {
     return this.prisma.ingredient.findMany(args);
   }
-  async findOne<T extends Prisma.IngredientFindUniqueArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientFindUniqueArgs>
-  ): Promise<Ingredient | null> {
+  async findOne(args: any): Promise<any | null> {
     return this.prisma.ingredient.findUnique(args);
   }
-  async create<T extends Prisma.IngredientCreateArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientCreateArgs>
-  ): Promise<Ingredient> {
-    return this.prisma.ingredient.create<T>(args);
+  async create(args: any): Promise<any> {
+    return this.prisma.ingredient.create(args);
   }
-  async update<T extends Prisma.IngredientUpdateArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientUpdateArgs>
-  ): Promise<Ingredient> {
-    return this.prisma.ingredient.update<T>(args);
+  async update(args: any): Promise<any> {
+    return this.prisma.ingredient.update(args);
   }
-  async delete<T extends Prisma.IngredientDeleteArgs>(
-    args: Prisma.SelectSubset<T, Prisma.IngredientDeleteArgs>
-  ): Promise<Ingredient> {
+  async delete(args: any): Promise<any> {
     return this.prisma.ingredient.delete(args);
   }
 }

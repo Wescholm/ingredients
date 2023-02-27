@@ -10,7 +10,6 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
-import { Prisma, User } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 
@@ -20,35 +19,23 @@ export class UserServiceBase {
     protected readonly passwordService: PasswordService
   ) {}
 
-  async count<T extends Prisma.UserFindManyArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserFindManyArgs>
-  ): Promise<number> {
+  async count(args: any): Promise<any> {
     return this.prisma.user.count(args);
   }
 
-  async findMany<T extends Prisma.UserFindManyArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserFindManyArgs>
-  ): Promise<User[]> {
+  async findMany(args: any): Promise<any[]>{
     return this.prisma.user.findMany(args);
   }
-  async findOne<T extends Prisma.UserFindUniqueArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserFindUniqueArgs>
-  ): Promise<User | null> {
+  async findOne(args: any): Promise<any | null> {
     return this.prisma.user.findUnique(args);
   }
-  async create<T extends Prisma.UserCreateArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserCreateArgs>
-  ): Promise<User> {
-    return this.prisma.user.create<T>(args);
+  async create(args: any): Promise<any> {
+    return this.prisma.user.create(args);
   }
-  async update<T extends Prisma.UserUpdateArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserUpdateArgs>
-  ): Promise<User> {
-    return this.prisma.user.update<T>(args);
+  async update(args: any): Promise<any> {
+    return this.prisma.user.update(args);
   }
-  async delete<T extends Prisma.UserDeleteArgs>(
-    args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
-  ): Promise<User> {
+  async delete(args: any): Promise<any> {
     return this.prisma.user.delete(args);
   }
 }
