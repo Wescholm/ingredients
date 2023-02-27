@@ -1,6 +1,7 @@
-datasource postgres {
-  provider = "postgresql"
-  url      = env("DB_URL")
+datasource db {
+  provider          = "mongodb"
+  url               = env("DB_URL")
+  shadowDatabaseUrl = env("DB_URL")
 }
 
 generator client {
@@ -10,7 +11,7 @@ generator client {
 model User {
   createdAt DateTime @default(now())
   firstName String?
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid()) @map("_id")
   lastName  String?
   password  String
   roles     Json
