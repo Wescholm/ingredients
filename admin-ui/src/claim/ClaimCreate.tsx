@@ -1,21 +1,21 @@
 import * as React from "react";
 import {
-  Edit,
+  Create,
   SimpleForm,
-  EditProps,
+  CreateProps,
   TextInput,
   BooleanInput,
 } from "react-admin";
 
-export const IngredientEdit = (props: EditProps): React.ReactElement => {
+export const ClaimCreate = (props: CreateProps): React.ReactElement => {
   return (
-    <Edit {...props}>
+    <Create {...props}>
       <SimpleForm>
         <TextInput label="Description" multiline source="description" />
         <BooleanInput label="isValid" source="isValid" />
         <TextInput label="Language" source="language" />
         <TextInput label="Name" source="name" />
       </SimpleForm>
-    </Edit>
+    </Create>
   );
 };

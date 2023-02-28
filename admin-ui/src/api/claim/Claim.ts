@@ -1,6 +1,6 @@
-export type Ingredient = {
+export type Claim = {
   createdAt: Date;
-  description: string | null;
+  description: string;
   id: string;
   isValid: boolean | null;
   language: string;

@@ -9,22 +9,36 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { InputType, Field } from "@nestjs/graphql";
+import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsBoolean } from "class-validator";
+import { IsDate, IsString, IsBoolean, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
 
-@InputType()
-class IngredientCreateInput {
+@ObjectType()
+class Claim {
   @ApiProperty({
-    required: false,
+    required: true,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  createdAt!: Date;
+
+  @ApiProperty({
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
+  @Field(() => String)
+  description!: string;
+
+  @ApiProperty({
+    required: true,
+    type: String,
   })
-  description?: string | null;
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: false,
@@ -35,7 +49,7 @@ class IngredientCreateInput {
   @Field(() => Boolean, {
     nullable: true,
   })
-  isValid?: boolean | null;
+  isValid!: boolean | null;
 
   @ApiProperty({
     required: true,
@@ -52,6 +66,14 @@ class IngredientCreateInput {
   @IsString()
   @Field(() => String)
   name!: string;
+
+  @ApiProperty({
+    required: true,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
 }
 
-export { IngredientCreateInput as IngredientCreateInput };
+export { Claim as Claim };

@@ -1,5 +1,5 @@
-export type IngredientUpdateInput = {
-  description?: string | null;
+export type ClaimUpdateInput = {
+  description?: string;
   isValid?: boolean | null;
   language?: string;
   name?: string;

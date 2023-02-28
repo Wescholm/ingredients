@@ -11,53 +11,46 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsBoolean } from "class-validator";
+import { ClaimWhereInput } from "./ClaimWhereInput";
+import { ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
 
 @InputType()
-class IngredientUpdateInput {
+class ClaimListRelationFilter {
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => ClaimWhereInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => ClaimWhereInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => ClaimWhereInput, {
     nullable: true,
   })
-  description?: string | null;
+  every?: ClaimWhereInput;
 
   @ApiProperty({
     required: false,
-    type: Boolean,
+    type: () => ClaimWhereInput,
   })
-  @IsBoolean()
+  @ValidateNested()
+  @Type(() => ClaimWhereInput)
   @IsOptional()
-  @Field(() => Boolean, {
+  @Field(() => ClaimWhereInput, {
     nullable: true,
   })
-  isValid?: boolean | null;
+  some?: ClaimWhereInput;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: () => ClaimWhereInput,
   })
-  @IsString()
+  @ValidateNested()
+  @Type(() => ClaimWhereInput)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => ClaimWhereInput, {
     nullable: true,
   })
-  language?: string;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  name?: string;
+  none?: ClaimWhereInput;
 }
-
-export { IngredientUpdateInput as IngredientUpdateInput };
+export { ClaimListRelationFilter as ClaimListRelationFilter };

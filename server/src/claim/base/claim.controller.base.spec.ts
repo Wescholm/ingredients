@@ -13,8 +13,8 @@ import { ACLModule } from "../../auth/acl.module";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { map } from "rxjs";
-import { IngredientController } from "../ingredient.controller";
-import { IngredientService } from "../ingredient.service";
+import { ClaimController } from "../claim.controller";
+import { ClaimService } from "../claim.service";
 
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
@@ -104,18 +104,18 @@ const aclValidateRequestInterceptor = {
   },
 };
 
-describe("Ingredient", () => {
+describe("Claim", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       providers: [
         {
-          provide: IngredientService,
+          provide: ClaimService,
           useValue: service,
         },
       ],
-      controllers: [IngredientController],
+      controllers: [ClaimController],
       imports: [MorganModule.forRoot(), ACLModule],
     })
       .overrideGuard(DefaultAuthGuard)
@@ -132,9 +132,9 @@ describe("Ingredient", () => {
     await app.init();
   });
 
-  test("POST /ingredients", async () => {
+  test("POST /claims", async () => {
     await request(app.getHttpServer())
-      .post("/ingredients")
+      .post("/claims")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
@@ -144,9 +144,9 @@ describe("Ingredient", () => {
       });
   });
 
-  test("GET /ingredients", async () => {
+  test("GET /claims", async () => {
     await request(app.getHttpServer())
-      .get("/ingredients")
+      .get("/claims")
       .expect(HttpStatus.OK)
       .expect([
         {
@@ -157,9 +157,9 @@ describe("Ingredient", () => {
       ]);
   });
 
-  test("GET /ingredients/:id non existing", async () => {
+  test("GET /claims/:id non existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/ingredients"}/${nonExistingId}`)
+      .get(`${"/claims"}/${nonExistingId}`)
       .expect(HttpStatus.NOT_FOUND)
       .expect({
         statusCode: HttpStatus.NOT_FOUND,
@@ -168,9 +168,9 @@ describe("Ingredient", () => {
       });
   });
 
-  test("GET /ingredients/:id existing", async () => {
+  test("GET /claims/:id existing", async () => {
     await request(app.getHttpServer())
-      .get(`${"/ingredients"}/${existingId}`)
+      .get(`${"/claims"}/${existingId}`)
       .expect(HttpStatus.OK)
       .expect({
         ...FIND_ONE_RESULT,
@@ -179,10 +179,10 @@ describe("Ingredient", () => {
       });
   });
 
-  test("POST /ingredients existing resource", async () => {
+  test("POST /claims existing resource", async () => {
     let agent = request(app.getHttpServer());
     await agent
-      .post("/ingredients")
+      .post("/claims")
       .send(CREATE_INPUT)
       .expect(HttpStatus.CREATED)
       .expect({
@@ -192,7 +192,7 @@ describe("Ingredient", () => {
       })
       .then(function () {
         agent
-          .post("/ingredients")
+          .post("/claims")
           .send(CREATE_INPUT)
           .expect(HttpStatus.CONFLICT)
           .expect({

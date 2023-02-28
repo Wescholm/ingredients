@@ -17,7 +17,7 @@ import { SortOrder } from "../../util/SortOrder";
   isAbstract: true,
   description: undefined,
 })
-class IngredientOrderByInput {
+class ClaimOrderByInput {
   @ApiProperty({
     required: false,
     enum: ["asc", "desc"],
@@ -82,4 +82,4 @@ class IngredientOrderByInput {
   updatedAt?: SortOrder;
 }
 
-export { IngredientOrderByInput as IngredientOrderByInput };
+export { ClaimOrderByInput as ClaimOrderByInput };

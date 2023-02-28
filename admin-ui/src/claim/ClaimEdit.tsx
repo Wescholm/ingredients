@@ -7,7 +7,7 @@ import {
   BooleanInput,
 } from "react-admin";
 
-export const IngredientEdit = (props: EditProps): React.ReactElement => {
+export const ClaimEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>

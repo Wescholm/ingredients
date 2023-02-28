@@ -9,12 +9,12 @@ import {
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 
-export const IngredientList = (props: ListProps): React.ReactElement => {
+export const ClaimList = (props: ListProps): React.ReactElement => {
   return (
     <List
       {...props}
       bulkActionButtons={false}
-      title={"Ingredients"}
+      title={"Claims"}
       perPage={50}
       pagination={<Pagination />}
     >

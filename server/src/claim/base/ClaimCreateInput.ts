@@ -11,20 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsBoolean } from "class-validator";
+import { IsString, IsBoolean, IsOptional } from "class-validator";
 
 @InputType()
-class IngredientCreateInput {
+class ClaimCreateInput {
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  description?: string | null;
+  @Field(() => String)
+  description!: string;
 
   @ApiProperty({
     required: false,
@@ -54,4 +51,4 @@ class IngredientCreateInput {
   name!: string;
 }
 
-export { IngredientCreateInput as IngredientCreateInput };
+export { ClaimCreateInput as ClaimCreateInput };

@@ -18,37 +18,35 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
-import { IngredientService } from "../ingredient.service";
+import { ClaimService } from "../claim.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { IngredientCreateInput } from "./IngredientCreateInput";
-import { IngredientWhereInput } from "./IngredientWhereInput";
-import { IngredientWhereUniqueInput } from "./IngredientWhereUniqueInput";
-import { IngredientFindManyArgs } from "./IngredientFindManyArgs";
-import { IngredientUpdateInput } from "./IngredientUpdateInput";
-import { Ingredient } from "./Ingredient";
+import { ClaimCreateInput } from "./ClaimCreateInput";
+import { ClaimWhereInput } from "./ClaimWhereInput";
+import { ClaimWhereUniqueInput } from "./ClaimWhereUniqueInput";
+import { ClaimFindManyArgs } from "./ClaimFindManyArgs";
+import { ClaimUpdateInput } from "./ClaimUpdateInput";
+import { Claim } from "./Claim";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
-export class IngredientControllerBase {
+export class ClaimControllerBase {
   constructor(
-    protected readonly service: IngredientService,
+    protected readonly service: ClaimService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
-  @swagger.ApiCreatedResponse({ type: Ingredient })
+  @swagger.ApiCreatedResponse({ type: Claim })
   @nestAccessControl.UseRoles({
-    resource: "Ingredient",
+    resource: "Claim",
     action: "create",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async create(
-    @common.Body() data: IngredientCreateInput
-  ): Promise<Ingredient> {
+  async create(@common.Body() data: ClaimCreateInput): Promise<Claim> {
     return await this.service.create({
       data: data,
       select: {
@@ -65,18 +63,18 @@ export class IngredientControllerBase {
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
-  @swagger.ApiOkResponse({ type: [Ingredient] })
-  @ApiNestedQuery(IngredientFindManyArgs)
+  @swagger.ApiOkResponse({ type: [Claim] })
+  @ApiNestedQuery(ClaimFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "Ingredient",
+    resource: "Claim",
     action: "read",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async findMany(@common.Req() request: Request): Promise<Ingredient[]> {
-    const args = plainToClass(IngredientFindManyArgs, request.query);
+  async findMany(@common.Req() request: Request): Promise<Claim[]> {
+    const args = plainToClass(ClaimFindManyArgs, request.query);
     return this.service.findMany({
       ...args,
       select: {
@@ -93,10 +91,10 @@ export class IngredientControllerBase {
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
-  @swagger.ApiOkResponse({ type: Ingredient })
+  @swagger.ApiOkResponse({ type: Claim })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Ingredient",
+    resource: "Claim",
     action: "read",
     possession: "own",
   })
@@ -104,8 +102,8 @@ export class IngredientControllerBase {
     type: errors.ForbiddenException,
   })
   async findOne(
-    @common.Param() params: IngredientWhereUniqueInput
-  ): Promise<Ingredient | null> {
+    @common.Param() params: ClaimWhereUniqueInput
+  ): Promise<Claim | null> {
     const result = await this.service.findOne({
       where: params,
       select: {
@@ -128,10 +126,10 @@ export class IngredientControllerBase {
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
-  @swagger.ApiOkResponse({ type: Ingredient })
+  @swagger.ApiOkResponse({ type: Claim })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Ingredient",
+    resource: "Claim",
     action: "update",
     possession: "any",
   })
@@ -139,9 +137,9 @@ export class IngredientControllerBase {
     type: errors.ForbiddenException,
   })
   async update(
-    @common.Param() params: IngredientWhereUniqueInput,
-    @common.Body() data: IngredientUpdateInput
-  ): Promise<Ingredient | null> {
+    @common.Param() params: ClaimWhereUniqueInput,
+    @common.Body() data: ClaimUpdateInput
+  ): Promise<Claim | null> {
     try {
       return await this.service.update({
         where: params,
@@ -167,10 +165,10 @@ export class IngredientControllerBase {
   }
 
   @common.Delete("/:id")
-  @swagger.ApiOkResponse({ type: Ingredient })
+  @swagger.ApiOkResponse({ type: Claim })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "Ingredient",
+    resource: "Claim",
     action: "delete",
     possession: "any",
   })
@@ -178,8 +176,8 @@ export class IngredientControllerBase {
     type: errors.ForbiddenException,
   })
   async delete(
-    @common.Param() params: IngredientWhereUniqueInput
-  ): Promise<Ingredient | null> {
+    @common.Param() params: ClaimWhereUniqueInput
+  ): Promise<Claim | null> {
     try {
       return await this.service.delete({
         where: params,

@@ -1,24 +1,17 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  ListProps,
+  Show,
+  SimpleShowLayout,
+  ShowProps,
   DateField,
   TextField,
   BooleanField,
 } from "react-admin";
-import Pagination from "../Components/Pagination";
 
-export const IngredientList = (props: ListProps): React.ReactElement => {
+export const ClaimShow = (props: ShowProps): React.ReactElement => {
   return (
-    <List
-      {...props}
-      bulkActionButtons={false}
-      title={"Ingredients"}
-      perPage={50}
-      pagination={<Pagination />}
-    >
-      <Datagrid rowClick="show">
+    <Show {...props}>
+      <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
         <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
@@ -26,7 +19,7 @@ export const IngredientList = (props: ListProps): React.ReactElement => {
         <TextField label="Language" source="language" />
         <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
-      </Datagrid>
-    </List>
+      </SimpleShowLayout>
+    </Show>
   );
 };
