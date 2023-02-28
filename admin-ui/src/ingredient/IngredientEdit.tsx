@@ -13,6 +13,7 @@ export const IngredientEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="Description" multiline source="description" />
         <BooleanInput label="isValid" source="isValid" />
+        <TextInput label="Language" source="language" />
         <TextInput label="Name" source="name" />
       </SimpleForm>
     </Edit>

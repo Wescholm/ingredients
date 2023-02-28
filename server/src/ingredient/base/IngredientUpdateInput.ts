@@ -46,6 +46,17 @@ class IngredientUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  language?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   name?: string;
 }
 

@@ -23,6 +23,7 @@ export const IngredientList = (props: ListProps): React.ReactElement => {
         <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
         <BooleanField label="isValid" source="isValid" />
+        <TextField label="Language" source="language" />
         <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>

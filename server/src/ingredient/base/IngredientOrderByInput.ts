@@ -61,6 +61,15 @@ class IngredientOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  language?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   name?: SortOrder;
 
   @ApiProperty({

@@ -5,6 +5,7 @@ export type IngredientOrderByInput = {
   description?: SortOrder;
   id?: SortOrder;
   isValid?: SortOrder;
+  language?: SortOrder;
   name?: SortOrder;
   updatedAt?: SortOrder;
 };

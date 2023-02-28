@@ -61,6 +61,17 @@ class IngredientWhereInput {
   @Field(() => StringFilter, {
     nullable: true,
   })
+  language?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
   name?: StringFilter;
 }
 
