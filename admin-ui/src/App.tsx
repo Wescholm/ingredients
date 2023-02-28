@@ -13,6 +13,10 @@ import { IngredientList } from "./ingredient/IngredientList";
 import { IngredientCreate } from "./ingredient/IngredientCreate";
 import { IngredientEdit } from "./ingredient/IngredientEdit";
 import { IngredientShow } from "./ingredient/IngredientShow";
+import { ClaimList } from "./claim/ClaimList";
+import { ClaimCreate } from "./claim/ClaimCreate";
+import { ClaimEdit } from "./claim/ClaimEdit";
+import { ClaimShow } from "./claim/ClaimShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -52,6 +56,13 @@ const App = (): React.ReactElement => {
           edit={IngredientEdit}
           create={IngredientCreate}
           show={IngredientShow}
+        />
+        <Resource
+          name="Claim"
+          list={ClaimList}
+          edit={ClaimEdit}
+          create={ClaimCreate}
+          show={ClaimShow}
         />
       </Admin>
     </div>

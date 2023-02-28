@@ -14,7 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsString, IsOptional, IsBoolean } from "class-validator";
 
 @InputType()
-class IngredientCreateInput {
+class ClaimUpdateInput {
   @ApiProperty({
     required: false,
     type: String,
@@ -24,7 +24,7 @@ class IngredientCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  description?: string | null;
+  description?: string;
 
   @ApiProperty({
     required: false,
@@ -38,20 +38,26 @@ class IngredientCreateInput {
   isValid?: boolean | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  language!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  language?: string;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  name!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name?: string;
 }
 
-export { IngredientCreateInput as IngredientCreateInput };
+export { ClaimUpdateInput as ClaimUpdateInput };

@@ -23,6 +23,17 @@ model Ingredient {
   description String?
   id          String   @id @default(cuid())
   isValid     Boolean?
+  language    String
+  name        String   @unique
+  updatedAt   DateTime @updatedAt
+}
+
+model Claim {
+  createdAt   DateTime @default(now())
+  description String
+  id          String   @id @default(cuid())
+  isValid     Boolean?
+  language    String
   name        String   @unique
   updatedAt   DateTime @updatedAt
 }

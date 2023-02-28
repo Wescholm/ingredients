@@ -1,6 +1,6 @@
 import { SortOrder } from "../../util/SortOrder";
 
-export type IngredientOrderByInput = {
+export type ClaimOrderByInput = {
   createdAt?: SortOrder;
   description?: SortOrder;
   id?: SortOrder;
