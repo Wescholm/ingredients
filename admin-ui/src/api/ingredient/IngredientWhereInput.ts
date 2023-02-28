@@ -6,5 +6,6 @@ export type IngredientWhereInput = {
   description?: StringNullableFilter;
   id?: StringFilter;
   isValid?: BooleanNullableFilter;
+  language?: StringFilter;
   name?: StringFilter;
 };

@@ -23,6 +23,7 @@ const CREATE_INPUT = {
   description: "exampleDescription",
   id: "exampleId",
   isValid: "true",
+  language: "exampleLanguage",
   name: "exampleName",
   updatedAt: new Date(),
 };
@@ -31,6 +32,7 @@ const CREATE_RESULT = {
   description: "exampleDescription",
   id: "exampleId",
   isValid: "true",
+  language: "exampleLanguage",
   name: "exampleName",
   updatedAt: new Date(),
 };
@@ -40,6 +42,7 @@ const FIND_MANY_RESULT = [
     description: "exampleDescription",
     id: "exampleId",
     isValid: "true",
+    language: "exampleLanguage",
     name: "exampleName",
     updatedAt: new Date(),
   },
@@ -49,6 +52,7 @@ const FIND_ONE_RESULT = {
   description: "exampleDescription",
   id: "exampleId",
   isValid: "true",
+  language: "exampleLanguage",
   name: "exampleName",
   updatedAt: new Date(),
 };

@@ -43,6 +43,14 @@ class IngredientCreateInput {
   })
   @IsString()
   @Field(() => String)
+  language!: string;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
   name!: string;
 }
 
